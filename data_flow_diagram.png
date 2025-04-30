@@ -1,0 +1,25 @@
+// Data Flow Diagram
+digraph {
+	rankdir=LR size="10,5"
+	node [fillcolor=lightblue fontname=Arial shape=box style=filled]
+	edge [color=darkblue fontname=Arial]
+	W [label="Weather Data
+(271,554 rows)" fillcolor=lightgreen]
+	EV [label="EV Population Data
+(239,747 rows)" fillcolor=lightgreen]
+	T [label="Traffic Data
+(48,204 rows)" fillcolor=lightgreen]
+	P [label="Preprocessing
+& Merging" fillcolor=lightyellow]
+	M1 [label="Prophet Model" fillcolor=lightcoral]
+	M2 [label="ARIMA Model" fillcolor=lightcoral]
+	F [label="Forecasts
+(2025–2027)" fillcolor=lightpink]
+	W -> P [label=Merge]
+	EV -> P [label=Merge]
+	T -> P [label=Merge]
+	P -> M1 [label="Time-Series Data"]
+	P -> M2 [label="Time-Series Data"]
+	M1 -> F [label=Predict]
+	M2 -> F [label=Predict]
+}
